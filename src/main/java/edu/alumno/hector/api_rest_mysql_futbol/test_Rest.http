@@ -1,0 +1,45 @@
+###
+##getCiudadesList
+GET  http://localhost:8090/api/v1/ciudades HTTP/1.1
+Content-Type: application/json
+###
+##getCiudadesList
+GET  http://localhost:8090/api/v1/ciudades/orden/desc HTTP/1.1
+Content-Type: application/json
+###
+##getCiudadesList
+GET  http://localhost:8090/api/v1/ciudades/56/info HTTP/1.1
+Content-Type: application/json
+###
+##getCiudadesByNombreContainingListOrderByName
+GET  http://localhost:8090/api/v1/ciudades/nombre/Val/orden/desc HTTP/1.1
+Content-Type: application/json
+###
+##getAllCiudades
+GET  http://localhost:8090/api/v1/ciudades HTTP/1.1
+Content-Type: application/json
+###
+##getAllCiudades
+GET  http://localhost:8090/api/v1/ciudades?size=5 HTTP/1.1
+Content-Type: application/json
+###
+##getAllCiudades
+GET  http://localhost:8090/api/v1/ciudades?sort=nombre,desc&page=5 HTTP/1.1
+Content-Type: application/json
+###
+##getAllCiudades
+GET  http://localhost:8090/api/v1/ciudades?nombre=Val&page=0&size=10 HTTP/1.1
+Content-Type: application/json
+###
+##getAllCiudades
+GET  http://localhost:8090/api/v1/ciudades?sort=nombre,asc&nombre=Alb&page=0&size=10 HTTP/1.1
+Content-Type: application/json
+###
+##getAllCiudades
+GET  http://localhost:8090/api/v1/ciudades?sort=habitantes,asc&nombre=Val&page=0&size=10 HTTP/1.1
+Content-Type: application/json
+
+###
+##getAllEquipos
+GET  http://localhost:8090/api/v1/equipos HTTP/1.1
+Content-Type: application/json
