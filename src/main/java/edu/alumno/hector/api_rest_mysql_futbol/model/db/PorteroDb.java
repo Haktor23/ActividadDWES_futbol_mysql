@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
@@ -18,8 +20,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @IdClass(JugadorId.class)
-@Table(name= "jugadores")
-public class JugadorDb implements Serializable {
+@Table(name= "porteros")
+public class PorteroDb implements Serializable {
     @Id
     @Size(min = 3, message="El id del equipo tiene que tener un tamaño mínimo de 3")
     private String idEquipo;
@@ -27,12 +29,11 @@ public class JugadorDb implements Serializable {
     @Id
     @Column(nullable = false)
     private Long dorsal;
+    private Long partidos;
+    private Long goles;
+   @OneToOne
+   @JoinColumn(name="idEquipo", referencedColumnName = ("idEquipo"))
+   @JoinColumn(name="dorsal", referencedColumnName = ("dorsal"))
 
-    @Size(min = 10, max = 30, message="El nombre debe de tener un tamaño entre 10 y 30 caracteres")
-    private String nombre;
-
-    @Size(max = 10, message="La posición debe de tener un tamaño de 10 caracteres")
-    private String posicion;
-
-    private Long sueldo;
+    private JugadorDb jugadorDb;
 }

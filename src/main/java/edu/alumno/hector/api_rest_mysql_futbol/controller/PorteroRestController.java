@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.domain.Sort.Direction;
 
-import edu.alumno.hector.api_rest_mysql_futbol.model.dto.JugadorList;
 import edu.alumno.hector.api_rest_mysql_futbol.model.dto.PaginaDto;
-import edu.alumno.hector.api_rest_mysql_futbol.srv.JugadorService;
+import edu.alumno.hector.api_rest_mysql_futbol.model.dto.PorteroList;
+import edu.alumno.hector.api_rest_mysql_futbol.srv.PorteroService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,15 +23,15 @@ import java.util.List;
 import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/")
-public class JugadorRestController {
+public class PorteroRestController {
 
-private final JugadorService jugadorService;
+private final PorteroService porteroService;
 
-public JugadorRestController(JugadorService jugadorService) {
-        this.jugadorService = jugadorService;
+public PorteroRestController(PorteroService porteroService) {
+        this.porteroService = porteroService;
     }
-    @GetMapping("/jugadores")
-    public ResponseEntity <Map<String,Object>> getAllJugadores(
+    @GetMapping("/porteros")
+    public ResponseEntity <Map<String,Object>> getAllPorteros(
         @RequestParam(defaultValue =  "0") int page,
         @RequestParam(defaultValue =  "3") int size,
         @RequestParam(defaultValue =  "idEquipo,asc") String[] sort) {
@@ -53,16 +53,16 @@ public JugadorRestController(JugadorService jugadorService) {
         Sort sorts= Sort.by(criteriosOrdenacion);
 
         Pageable paging = PageRequest.of(page,size,sorts);
-        PaginaDto<JugadorList> paginaJugadoresList=jugadorService.findAll(paging);
+        PaginaDto<PorteroList> paginaPorterosList=porteroService.findAll(paging);
 
-        List<JugadorList> jugadores = paginaJugadoresList.getContent();
+        List<PorteroList> porteros = paginaPorterosList.getContent();
         Map<String, Object> response = new HashMap();
 
-        response.put("data", jugadores);
-        response.put("currentPage", paginaJugadoresList.getNumber());
-        response.put("pageSize", paginaJugadoresList.getSize());
-        response.put("totalItems", paginaJugadoresList.getTotalElements());
-        response.put("totalPages", paginaJugadoresList.getTotalPages());
+        response.put("data", porteros);
+        response.put("currentPage", paginaPorterosList.getNumber());
+        response.put("pageSize", paginaPorterosList.getSize());
+        response.put("totalItems", paginaPorterosList.getTotalElements());
+        response.put("totalPages", paginaPorterosList.getTotalPages());
         return new ResponseEntity<>(response, HttpStatus.OK);
 
        } catch (Exception e) {

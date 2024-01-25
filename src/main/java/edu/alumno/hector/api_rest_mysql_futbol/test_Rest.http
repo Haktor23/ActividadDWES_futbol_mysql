@@ -45,6 +45,12 @@ GET  http://localhost:8090/api/v1/equipos HTTP/1.1
 Content-Type: application/json
 
 ###
-##getAllEquipos
+##getAllJugadores
 GET  http://localhost:8090/api/v1/jugadores HTTP/1.1
+Content-Type: application/json
+
+
+###
+##getAllPorteros
+GET  http://localhost:8090/api/v1/porteros HTTP/1.1
 Content-Type: application/json
