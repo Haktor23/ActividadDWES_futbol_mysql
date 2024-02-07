@@ -38,10 +38,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String nickname;
 
-        if (authHeader == null && !authHeader.startsWith("Bearer ")) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(req, res);
             return;
         }
+        
         jwt = authHeader.substring(7);
         try {
             nickname = jwtService.getNicknameUsuarioFromToken(jwt);

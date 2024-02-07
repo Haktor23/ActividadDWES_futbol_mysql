@@ -11,18 +11,17 @@ import edu.alumno.hector.api_rest_mysql_futbol.security.entity.enums.RolNombre;
 import edu.alumno.hector.api_rest_mysql_futbol.security.repository.RolRepository;
 import jakarta.validation.constraints.NotNull;
 
-
 @Service
 @Transactional
 public class RolService {
     @Autowired
     RolRepository rolRepository;
 
-    public Optional<RolDb> getByRolNombre(RolNombre rolNombre){
+    public Optional<RolDb> getByRolNombre(RolNombre rolNombre) {
         return rolRepository.findByNombre(rolNombre);
     }
 
-    public void save(@NotNull RolDb rol){
+    public void save(@NotNull RolDb rol) {
         rolRepository.save(rol);
     }
 }

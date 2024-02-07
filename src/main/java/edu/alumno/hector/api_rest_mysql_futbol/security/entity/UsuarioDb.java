@@ -22,11 +22,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "roles")
+@Table(name = "usuarios")
 public class UsuarioDb {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @NotNull
     private String nombre;
     @NotNull
@@ -38,7 +38,7 @@ public class UsuarioDb {
     private String password;
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "idRol"))
+    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "idUsuario"), inverseJoinColumns = @JoinColumn(name = "idRol"))
     private Set<RolDb> roles = new HashSet<>();
 
     public UsuarioDb(@NotNull String nombre, @NotNull String nickname, @NotNull String email, @NotNull String password) {
